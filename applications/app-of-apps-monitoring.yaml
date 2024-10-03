@@ -15,10 +15,10 @@ spec:
         value: "true"
       - name: "argocd.prometheus.ingress"
         value: "prometheus.company123.com"
-      - name: "argocd.prometheus.enabled"
+      - name: "argocd.grafana.enabled"
         value: "true"
       - name: "argocd.grafana.ingress"
-        value: "prometheus.company123.com"
+        value: "grafana.company123.com"
   destination:
     namespace: giropops-senhas
     server: 'https://kubernetes.default.svc'
