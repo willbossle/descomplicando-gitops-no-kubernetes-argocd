@@ -1,23 +1,23 @@
-{{ -{{- if .Values.argocd.giropopsSenhas.enabled -}}
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: giropops-senhas
-  namespace: argocd
-spec:
-  project: 'default'
-  source:
-    repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
-    targetRevision: feat/day2
-    path: giropops-senhas/helm
-  destination:
-    namespace: giropops-senhas
-    server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-    syncOptions:
-    - CreateNamespace=true
-    - PruneLast=true
-{{- end -}}}}
+{{- if .Values.argocd.giropopsSenhas.enabled }}
+  apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    name: giropops-senhas
+    namespace: argocd
+  spec:
+    project: 'default'
+    source:
+      repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+      targetRevision: feat/day2
+      path: giropops-senhas/helm
+    destination:
+      namespace: giropops-senhas
+      server: 'https://kubernetes.default.svc'
+    syncPolicy:
+      automated:
+        selfHeal: true
+        prune: true
+      syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+{{- end }}
