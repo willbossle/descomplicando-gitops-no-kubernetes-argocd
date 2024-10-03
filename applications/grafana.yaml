@@ -12,6 +12,14 @@ spec:
     helm:
       valueFiles:
       - $values/grafana/values.yaml
-  - repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+  - repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git' #este repo vira a variável $values acima
     targetRevision: feat/day2
     ref: values
+  destination:
+    namespace: monitoring
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
