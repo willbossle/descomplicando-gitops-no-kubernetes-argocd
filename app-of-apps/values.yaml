@@ -1,6 +1,7 @@
+# values.yaml
 argocd:
   giropopsSenhas:
     enabled: false
-    replicas: 3
+    replicas: 4
   randomLogger:
     enabled: false
