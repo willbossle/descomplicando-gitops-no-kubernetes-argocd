@@ -6,10 +6,15 @@ metadata:
 spec:
   project: 'default'
   source:
-    helm: {}
+    helm:
+      parameters:
+      - name: "argocd.giropopsSenhas.enabled"
+        value: "true"
+      - name: "argocd.randomLogger.enabled"
+        value: "true"
     repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
     targetRevision: feat/day2
-    path: giropops-senhas/helm
+    path: app-of-apps
   destination:
     namespace: giropops-senhas
     server: 'https://kubernetes.default.svc'
