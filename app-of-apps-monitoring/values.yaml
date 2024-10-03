@@ -1,0 +1,8 @@
+# values.yaml
+argocd:
+  prometheus:
+    enabled: false
+    ingress: "https://prometheus-company123.com"
+  grafana:
+    enabled: false
+    ingress: "https://grafana-company123.com"
