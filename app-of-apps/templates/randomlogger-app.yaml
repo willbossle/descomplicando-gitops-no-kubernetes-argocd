@@ -1,20 +1,15 @@
+{{ if .Values.argocd.randomLogger.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: random-logger
   namespace: argocd
 spec:
   project: 'default'
   source:
     repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
     targetRevision: feat/day2
-    path: app-of-apps
-    helm:
-      parameters:
-      - name: "argocd.giropopsSenhas.enabled"
-        value: "true"
-      - name: "argocd.randomLogger.enabled"
-        value: "true"
+    path: random-logger/helm
   destination:
     namespace: giropops-senhas
     server: 'https://kubernetes.default.svc'
@@ -25,3 +20,4 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - PruneLast=true
+{{ end }}
