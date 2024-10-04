@@ -12,9 +12,11 @@ spec:
       revision: feat/day3
       directories:
       - path: applicationset/apps/*/helm
+        #   - path: applicationset/apps/random-logger/helm
+        #     exclude: true
   template:
     metadata:
-      name: '{{index .path.segments 3}}' #pega o terceiro nome do caminho completo (ex: applicationset(1)/apps(2)/giropops-senhas(3) e/ou random-logger(3))
+      name: '{{index .path.segments 2}}' #pega o terceiro nome do caminho completo (ex: applicationset(0)/apps(1)/giropops-senhas(2) e/ou random-logger(2))
     spec:
       project: "default"
       source:
@@ -23,7 +25,7 @@ spec:
         path: '{{.path.path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{index .path.segments 3}}'
+        namespace: '{{index .path.segments 2}}'
       syncPolicy:
         automated: {}
         syncOptions:
