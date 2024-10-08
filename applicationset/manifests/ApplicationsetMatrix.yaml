@@ -8,19 +8,20 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - matrix:
-    - git:
-        repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
-        revision: feat/day3
-        directories:
-        - path: applicationset/apps/*/helm
-          #   - path: applicationset/apps/random-logger/helm
-          #     exclude: true
-    - git:
-        repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
-        revision: feat/day3
-        pathParamPrefix: cfg
-        files:
-        - path: applicationset/configs/dev.json
+      generators:
+      - git:
+          repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+          revision: feat/day3
+          directories:
+          - path: applicationset/apps/*/helm
+            #   - path: applicationset/apps/random-logger/helm
+            #     exclude: true
+      - git:
+          repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+          revision: feat/day3
+          pathParamPrefix: cfg
+          files:
+          - path: applicationset/configs/dev.json
   template:
     metadata:
       name: '{{index .path.segments 2}}-{{.cluster.nome}}' #pega o terceiro nome do caminho completo (ex: applicationset(0)/apps(1)/giropops-senhas(2) e/ou random-logger(2))
