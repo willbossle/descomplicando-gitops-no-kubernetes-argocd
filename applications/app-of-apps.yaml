@@ -4,10 +4,11 @@ metadata:
   name: app-of-apps
   namespace: argocd
 spec:
-  project: 'default'
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
   source:
-    repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
-    targetRevision: feat/day2
     path: app-of-apps
     helm:
       parameters:
@@ -15,9 +16,8 @@ spec:
         value: "true"
       - name: "argocd.randomLogger.enabled"
         value: "true"
-  destination:
-    namespace: giropops-senhas
-    server: 'https://kubernetes.default.svc'
+    repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+    targetRevision: feat/day2
   syncPolicy:
     automated:
       selfHeal: true

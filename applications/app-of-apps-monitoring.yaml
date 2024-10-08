@@ -4,10 +4,11 @@ metadata:
   name: app-of-apps-monitoring
   namespace: argocd
 spec:
-  project: 'default'
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
   source:
-    repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
-    targetRevision: feat/day2
     path: app-of-apps-monitoring
     helm:
       parameters:
@@ -19,9 +20,8 @@ spec:
         value: "true"
       - name: "argocd.grafana.ingress"
         value: "grafana.company123.com"
-  destination:
-    namespace: giropops-senhas
-    server: 'https://kubernetes.default.svc'
+    repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+    targetRevision: feat/day2
   syncPolicy:
     automated:
       selfHeal: true
