@@ -9,10 +9,10 @@ spec:
   generators:
   - pullRequest:
       github:
-        owner: willber
+        owner: willbossle
         repo: descomplicando-gitops-no-kubernetes-argocd
         tokenRef:
-          name: github-token
+          secretName: github-token
           key: token
       requeueAfterSeconds: 60
   template:
