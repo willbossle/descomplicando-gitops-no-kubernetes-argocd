@@ -4,7 +4,6 @@ metadata:
   name: cluster-addons
   namespace: argocd
 spec:
-  goTemplate: true
   generators:
   - pullRequest:
       github:
@@ -21,7 +20,7 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git
-        targetRevision: '{{head_sha}}'
+        targetRevision: '{{target_branch_slug}}'
         path: app-of-apps/
       destination:
         server: https://kubernetes.default.svc
