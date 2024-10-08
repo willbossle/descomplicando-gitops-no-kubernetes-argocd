@@ -5,7 +5,6 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   generators:
   - pullRequest:
       github:
@@ -21,7 +20,7 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: 'https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git'
+        repoURL: https://github.com/willbossle/descomplicando-gitops-no-kubernetes-argocd.git
         targetRevision: '{{head_sha}}'
         path: app-of-apps/
       destination:
